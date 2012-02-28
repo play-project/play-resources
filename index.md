@@ -1,1 +1,1 @@
-# Play Project resources
+# Play Project GH page
