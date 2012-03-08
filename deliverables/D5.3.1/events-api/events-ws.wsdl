@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+	xmlns:tns="http://www.petalslink.com/events-api/1.0" xmlns:wstop="http://docs.oasis-open.org/wsn/t-1"
+	xmlns:wsa="http://www.w3.org/2005/08/addressing" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="events-api"
+	targetNamespace="http://www.petalslink.com/events-api/1.0">
+	<!-- ================================================== -->
+	<!-- ================== imports ======================= -->
+	<!-- ================================================== -->
+	<wsdl:import location="events-api.wsdl" namespace="http://www.petalslink.com/events-api/1.0"></wsdl:import>
+	
+	<!-- ============================================= -->
+	<!-- ========== Binding definition =============== -->
+	<!-- ============================================= -->
+	<!-- NotificationProducer binding definition -->
+	<wsdl:binding name="EventsManagerSOAPBinding"
+		type="tns:EventsManager">
+
+		<soap:binding style="document"
+			transport="http://schemas.xmlsoap.org/soap/http" />
+		<wsdl:operation name="findEventProducersByTopics">
+
+			<soap:operation
+				soapAction="http://www.petalslink.com/events-api/1.0/findEventProducersByTopics" />
+			<wsdl:input>
+
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output>
+
+				<soap:body use="literal" />
+			</wsdl:output>
+			<wsdl:fault name="fault">
+
+				<soap:fault use="literal" name="fault" />
+			</wsdl:fault>
+		</wsdl:operation>
+		<wsdl:operation name="findTopicsByElement">
+
+			<soap:operation
+				soapAction="http://www.petalslink.com/events-api/1.0/findTopicsByElement" />
+			<wsdl:input>
+
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output>
+
+				<soap:body use="literal" />
+			</wsdl:output>
+			<wsdl:fault name="fault">
+
+				<soap:fault use="literal" name="fault" />
+			</wsdl:fault>
+		</wsdl:operation>
+		<wsdl:operation name="findEventProducersByElements">
+
+			<soap:operation
+				soapAction="http://www.petalslink.com/events-api/1.0/findEventProducersByElements" />
+			<wsdl:input>
+
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output>
+
+				<soap:body use="literal" />
+			</wsdl:output>
+			<wsdl:fault name="fault">
+
+				<soap:fault use="literal" name="fault" />
+			</wsdl:fault>
+		</wsdl:operation>
+
+		<wsdl:operation name="publishTopicNamespaceFromURL">
+
+			<soap:operation
+				soapAction="http://www.petalslink.com/events-api/1.0/publishTopicNamespaceFromURL" />
+			<wsdl:input>
+
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output>
+
+				<soap:body use="literal" />
+			</wsdl:output>
+			<wsdl:fault name="fault">
+
+				<soap:fault use="literal" name="fault" />
+			</wsdl:fault>
+		</wsdl:operation>
+		<wsdl:operation name="publishTopicNamespaceFromDOM">
+
+			<soap:operation
+				soapAction="http://www.petalslink.com/events-api/1.0/publishTopicNamespaceFromDOM" />
+			<wsdl:input>
+
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output>
+
+				<soap:body use="literal" />
+			</wsdl:output>
+			<wsdl:fault name="fault">
+				<soap:fault use="literal" name="fault" />
+			</wsdl:fault>
+		</wsdl:operation>
+		<wsdl:operation name="findTopics">
+			<soap:operation
+				soapAction="http://www.petalslink.com/events-api/1.0/findTopics" />
+			<wsdl:input>
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal" />
+			</wsdl:output>
+			<wsdl:fault name="fault">
+				<soap:fault use="literal" name="fault" />
+			</wsdl:fault>
+		</wsdl:operation>
+	</wsdl:binding>
+	<!-- ============================================= -->
+	<!-- =========== Service part definition ========= -->
+	<!-- ============================================= -->
+	<wsdl:service name="EventsManagerService">
+		<!-- ====== "NotificationProducer" service's interface part ====== -->
+		<wsdl:port name="EventsManagerPort" binding="tns:EventsManagerSOAPBinding">
+			<soap:address location="http://localhost:8085/service-events-api" />
+		</wsdl:port>
+	</wsdl:service>
+</wsdl:definitions>

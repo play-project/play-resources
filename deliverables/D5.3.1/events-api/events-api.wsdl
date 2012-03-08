@@ -1,0 +1,282 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+	xmlns:tns="http://www.petalslink.com/events-api/1.0" xmlns:wstop="http://docs.oasis-open.org/wsn/t-1"
+	xmlns:wsa="http://www.w3.org/2005/08/addressing" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="events-api"
+	targetNamespace="http://www.petalslink.com/events-api/1.0">
+	<!-- ================================================== -->
+	<!-- ================== imports ======================= -->
+	<!-- ================================================== -->
+
+	<!--TODO - OPTIONAL : import related wsdl files -->
+
+	<!-- ====================================== -->
+	<!-- ========= Types Definitions ========== -->
+	<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+	<wsdl:types>
+		<xsd:schema targetNamespace="http://www.petalslink.com/events-api/1.0"
+			xmlns:serv="http://www.petalslink.com/services-model/1.0"
+			elementFormDefault="qualified">
+			<xsd:import namespace="http://docs.oasis-open.org/wsn/t-1"
+				schemaLocation="./schema/t-1.xsd" />
+			<xsd:import namespace="http://www.w3.org/2005/08/addressing"
+				schemaLocation="./schema/wsaddressing10/wsaddressing10.xsd" />
+			<xsd:element name="fault">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="message" type="xsd:string"></xsd:element>
+						<xsd:element name="stacktrace" type="xsd:string"></xsd:element>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="findEventProducersByTopicsRequest">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="topic" type="xsd:QName" minOccurs="0"
+							maxOccurs="unbounded" />
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="findEventProducersByTopicsResponse">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element ref="wsa:EndpointReference" minOccurs="0"
+							maxOccurs="unbounded" />
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="findEventProducersByTopicsFault">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element ref="tns:fault">
+						</xsd:element>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="findTopicsByElement">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="element" type="xsd:QName"
+							minOccurs="1" maxOccurs="1" />
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="findTopicsByElementResponse">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="topic" type="xsd:QName" minOccurs="0"
+							maxOccurs="unbounded" />
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="findTopicsByElementFault">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element ref="tns:fault">
+						</xsd:element>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="findEventProducersByElements">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="element" type="xsd:QName"
+							minOccurs="0" maxOccurs="unbounded" />
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="findEventProducersByElementsResponse">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element ref="wsa:EndpointReference" minOccurs="0"
+							maxOccurs="unbounded" />
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="findEventProducersByElementsFault">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element ref="tns:fault">
+						</xsd:element>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="publishTopicNamespaceFromURL">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="topicNamespaceUrl" type="xsd:anyURI"></xsd:element>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="publishTopicNamespaceFromURLResponse">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element ref="tns:resourceIdentifier" maxOccurs="unbounded"
+							minOccurs="0"></xsd:element>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="publishTopicNamespaceFromURLFault">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element ref="tns:fault">
+						</xsd:element>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="resourceIdentifier">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="id" type="xsd:QName">
+						</xsd:element>
+						<xsd:element name="resourceType" type="xsd:string">
+						</xsd:element>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="publishTopicNamespaceFromDOM">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element ref="wstop:TopicNamespace"></xsd:element>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="publishTopicNamespaceFromDOMResponse">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element ref="tns:resourceIdentifier" maxOccurs="unbounded"
+							minOccurs="0"></xsd:element>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="publishTopicNamespaceFromDOMFault">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element ref="tns:fault">
+						</xsd:element>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="findTopics">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="request" type="xsd:string"></xsd:element>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="findTopicsResponse">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="topic" type="wstop:TopicType" minOccurs="0" maxOccurs="unbounded" ></xsd:element>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="findTopicsFault">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element ref="tns:fault">
+						</xsd:element>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+		</xsd:schema>
+	</wsdl:types>
+
+	<!-- ================================================== -->
+	<!-- ========= Message part definition ================ -->
+	<!-- ================================================== -->
+	<wsdl:message name="findEventProducersByTopicsRequest">
+		<wsdl:part name="body" element="tns:findEventProducersByTopicsRequest" />
+	</wsdl:message>
+
+	<wsdl:message name="findEventProducersByTopicsResponse">
+		<wsdl:part name="body" element="tns:findEventProducersByTopicsResponse" />
+	</wsdl:message>
+
+	<!-- =============================================== -->
+	<!-- ========= PortType definition ================ -->
+	<!-- =============================================== -->
+
+	<wsdl:message name="findTopicsByElementRequest">
+		<wsdl:part name="parameters" element="tns:findTopicsByElement"></wsdl:part>
+	</wsdl:message>
+	<wsdl:message name="findTopicsByElementResponse">
+		<wsdl:part name="parameters" element="tns:findTopicsByElementResponse"></wsdl:part>
+	</wsdl:message>
+	<wsdl:message name="findEventProducersByTopicsFault">
+		<wsdl:part name="parameters" element="tns:findEventProducersByTopicsFault"></wsdl:part>
+	</wsdl:message>
+	<wsdl:message name="findTopicsByElementFault">
+		<wsdl:part name="parameters" element="tns:findTopicsByElementFault"></wsdl:part>
+	</wsdl:message>
+	<wsdl:message name="findEventProducersByElementsRequest">
+		<wsdl:part name="parameters" element="tns:findEventProducersByElements"></wsdl:part>
+	</wsdl:message>
+	<wsdl:message name="findEventProducersByElementsResponse">
+		<wsdl:part name="parameters" element="tns:findEventProducersByElementsResponse"></wsdl:part>
+	</wsdl:message>
+	<wsdl:message name="findEventProducersByElementsFault">
+		<wsdl:part name="parameters" element="tns:findEventProducersByElementsFault"></wsdl:part>
+	</wsdl:message>
+	<wsdl:message name="publishTopicNamespaceFromURLRequest">
+		<wsdl:part name="parameters" element="tns:publishTopicNamespaceFromURL"></wsdl:part>
+	</wsdl:message>
+	<wsdl:message name="publishTopicNamespaceFromURLResponse">
+		<wsdl:part name="parameters" element="tns:publishTopicNamespaceFromURLResponse"></wsdl:part>
+	</wsdl:message>
+	<wsdl:message name="publishTopicNamespaceFromURLFault">
+		<wsdl:part name="parameters" element="tns:publishTopicNamespaceFromURLFault"></wsdl:part>
+	</wsdl:message>
+	<wsdl:message name="publishTopicNamespaceFromDOMRequest">
+		<wsdl:part name="parameters" element="tns:publishTopicNamespaceFromDOM"></wsdl:part>
+	</wsdl:message>
+	<wsdl:message name="publishTopicNamespaceFromDOMResponse">
+		<wsdl:part name="parameters" element="tns:publishTopicNamespaceFromDOMResponse"></wsdl:part>
+	</wsdl:message>
+	<wsdl:message name="publishTopicNamespaceFromDOMFault">
+		<wsdl:part name="parameters" element="tns:publishTopicNamespaceFromDOMFault"></wsdl:part>
+	</wsdl:message>
+	<wsdl:message name="findTopicsRequest">
+		<wsdl:part name="parameters" element="tns:findTopics"></wsdl:part>
+	</wsdl:message>
+	<wsdl:message name="findTopicsResponse">
+		<wsdl:part name="parameters" element="tns:findTopicsResponse"></wsdl:part>
+	</wsdl:message>
+	<wsdl:message name="findTopicsFault">
+		<wsdl:part name="parameters" element="tns:findTopicsFault"></wsdl:part>
+	</wsdl:message>
+	<wsdl:portType name="EventsManager">
+		<wsdl:operation name="findTopicsByElement">
+			<wsdl:input message="tns:findTopicsByElementRequest"></wsdl:input>
+			<wsdl:output message="tns:findTopicsByElementResponse"></wsdl:output>
+			<wsdl:fault name="fault" message="tns:findTopicsByElementFault"></wsdl:fault>
+		</wsdl:operation>
+		<wsdl:operation name="findEventProducersByTopics">
+			<wsdl:input message="tns:findEventProducersByTopicsRequest" />
+			<wsdl:output message="tns:findEventProducersByTopicsResponse" />
+			<wsdl:fault name="fault" message="tns:findEventProducersByTopicsFault"></wsdl:fault>
+		</wsdl:operation>
+		<wsdl:operation name="findEventProducersByElements">
+			<wsdl:input message="tns:findEventProducersByElementsRequest"></wsdl:input>
+			<wsdl:output message="tns:findEventProducersByElementsResponse"></wsdl:output>
+			<wsdl:fault name="fault" message="tns:findEventProducersByElementsFault"></wsdl:fault>
+		</wsdl:operation>
+		<wsdl:operation name="publishTopicNamespaceFromURL">
+			<wsdl:input message="tns:publishTopicNamespaceFromURLRequest"></wsdl:input>
+			<wsdl:output message="tns:publishTopicNamespaceFromURLResponse"></wsdl:output>
+			<wsdl:fault name="fault" message="tns:publishTopicNamespaceFromURLFault"></wsdl:fault>
+		</wsdl:operation>
+		<wsdl:operation name="publishTopicNamespaceFromDOM">
+			<wsdl:input message="tns:publishTopicNamespaceFromDOMRequest"></wsdl:input>
+			<wsdl:output message="tns:publishTopicNamespaceFromDOMResponse"></wsdl:output>
+			<wsdl:fault name="fault" message="tns:publishTopicNamespaceFromDOMFault"></wsdl:fault>
+		</wsdl:operation>
+		<wsdl:operation name="findTopics">
+			<wsdl:input message="tns:findTopicsRequest"></wsdl:input>
+			<wsdl:output message="tns:findTopicsResponse"></wsdl:output>
+			<wsdl:fault name="fault" message="tns:findTopicsFault"></wsdl:fault>
+		</wsdl:operation>
+	</wsdl:portType>
+
+</wsdl:definitions>

@@ -1,0 +1,1753 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+	xmlns:tns="http://www.petalslink.com/services-api/1.0" 
+	xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="services-api"
+	targetNamespace="http://www.petalslink.com/services-api/1.0">
+	<wsdl:types>
+		<xsd:schema targetNamespace="http://www.petalslink.com/services-api/1.0"
+			xmlns:model="http://www.petalslink.com/services-model/1.0">
+			<xsd:import namespace="http://www.petalslink.com/services-model/1.0"
+				schemaLocation="services-model.xsd"></xsd:import>
+			<xsd:element name="Fault">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="message" type="xsd:string"></xsd:element>
+						<xsd:element name="stacktrace" type="xsd:string"></xsd:element>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+
+			<xsd:element name="publishService">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="wsdlUrl" type="xsd:anyURI"></xsd:element>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="publishServiceResponse">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element ref="tns:resourceIdentifier" maxOccurs="unbounded" minOccurs="0"></xsd:element>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="findServices">
+				<xsd:complexType>
+					<xsd:sequence>
+
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="findServicesResponse">
+				<xsd:complexType>
+					<xsd:sequence>
+
+						<xsd:element ref="model:Service" maxOccurs="unbounded"
+							minOccurs="0"></xsd:element>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="getService">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="idService" type="xsd:QName"></xsd:element>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="getServiceResponse">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element ref="model:Service"></xsd:element>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="updateService">
+				<xsd:complexType>
+					<xsd:sequence>
+
+						<xsd:element ref="model:Service"></xsd:element>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="updateServiceResponse">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="idService" type="xsd:QName"></xsd:element>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="removeService">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="idService" type="xsd:QName"></xsd:element>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="removeServiceResponse">
+				<xsd:complexType>
+					<xsd:sequence>
+
+						<xsd:element ref="model:Service"></xsd:element>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="createTechnicalInterface">
+				<xsd:complexType>
+					<xsd:sequence>
+
+						<xsd:element ref="model:TechnicalInterface"></xsd:element>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="createTechnicalInterfaceResponse">
+				<xsd:complexType>
+					<xsd:sequence>
+
+						<xsd:element name="idTechnicalInterface" type="xsd:QName"></xsd:element>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="findTechnicalInterfaces">
+				<xsd:complexType>
+					<xsd:sequence>
+
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="findTechnicalInterfacesResponse">
+				<xsd:complexType>
+					<xsd:sequence>
+
+						<xsd:element ref="model:TechnicalInterface" maxOccurs="unbounded"
+							minOccurs="0"></xsd:element>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="getTechnicalInterface">
+				<xsd:complexType>
+					<xsd:sequence>
+
+						<xsd:element name="idTechnicalInterface" type="xsd:QName"></xsd:element>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="getTechnicalInterfaceResponse">
+				<xsd:complexType>
+					<xsd:sequence>
+
+						<xsd:element ref="model:TechnicalInterface"></xsd:element>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="updateTechnicalInterface">
+				<xsd:complexType>
+					<xsd:sequence>
+
+						<xsd:element ref="model:TechnicalInterface"></xsd:element>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="updateTechnicalInterfaceResponse">
+				<xsd:complexType>
+					<xsd:sequence>
+
+						<xsd:element name="idTechnicalInterface" type="xsd:QName">
+						</xsd:element>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="removeTechnicalInterface">
+				<xsd:complexType>
+					<xsd:sequence>
+
+						<xsd:element name="idTechnicalInterface" type="xsd:QName"></xsd:element>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="removeTechnicalInterfaceResponse">
+				<xsd:complexType>
+					<xsd:sequence>
+
+						<xsd:element ref="model:TechnicalInterface"></xsd:element>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="createTechnicalOperation">
+				<xsd:complexType>
+					<xsd:sequence>
+
+						<xsd:element ref="model:TechnicalOperation"></xsd:element>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="createTechnicalOperationResponse">
+				<xsd:complexType>
+					<xsd:sequence>
+
+						<xsd:element name="idTechnicalOperationResponse" type="xsd:QName"></xsd:element>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="findTechnicalOperations">
+				<xsd:complexType>
+					<xsd:sequence>
+
+						<xsd:element name="in" type="xsd:string"></xsd:element>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="findTechnicalOperationsResponse">
+				<xsd:complexType>
+					<xsd:sequence>
+
+						<xsd:element ref="model:TechnicalOperation" maxOccurs="unbounded"
+							minOccurs="0"></xsd:element>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="getTechnicalOperation">
+				<xsd:complexType>
+					<xsd:sequence>
+
+						<xsd:element name="idTechnicalOperation" type="xsd:QName"></xsd:element>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="getTechnicalOperationResponse">
+				<xsd:complexType>
+					<xsd:sequence>
+
+						<xsd:element ref="model:TechnicalOperation"></xsd:element>
+					</xsd:sequence>
+
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="updateTechnicalOperation">
+				<xsd:complexType>
+					<xsd:sequence>
+
+						<xsd:element ref="model:TechnicalOperation"></xsd:element>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="updateTechnicalOperationResponse">
+				<xsd:complexType>
+					<xsd:sequence>
+
+						<xsd:element name="idTechnicalOperation" type="xsd:QName">
+						</xsd:element>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="removeTechnicalOperation">
+				<xsd:complexType>
+					<xsd:sequence>
+
+						<xsd:element name="in" type="xsd:string"></xsd:element>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="removeTechnicalOperationResponse">
+				<xsd:complexType>
+					<xsd:sequence>
+
+						<xsd:element ref="model:TechnicalOperation"></xsd:element>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="createTechnicalParameter">
+				<xsd:complexType>
+					<xsd:sequence>
+
+						<xsd:element ref="model:TechnicalParameter"></xsd:element>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="createTechnicalParameterResponse">
+				<xsd:complexType>
+					<xsd:sequence>
+
+						<xsd:element name="idTechnicalParameter" type="xsd:QName"></xsd:element>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="findTechnicalParameters">
+				<xsd:complexType>
+					<xsd:sequence>
+
+						<xsd:element name="in" type="xsd:string"></xsd:element>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="findTechnicalParametersResponse">
+				<xsd:complexType>
+					<xsd:sequence>
+
+						<xsd:element ref="model:TechnicalParameter" maxOccurs="unbounded"
+							minOccurs="0"></xsd:element>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="getTechnicalParameter">
+				<xsd:complexType>
+					<xsd:sequence>
+
+						<xsd:element name="idTechnicalParameter" type="xsd:QName"></xsd:element>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="getTechnicalParameterResponse">
+				<xsd:complexType>
+					<xsd:sequence>
+
+						<xsd:element ref="model:TechnicalParameter"></xsd:element>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="updateTechnicalParameter">
+				<xsd:complexType>
+					<xsd:sequence>
+
+						<xsd:element ref="model:TechnicalParameter"></xsd:element>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="updateTechnicalParameterResponse">
+				<xsd:complexType>
+					<xsd:sequence>
+
+						<xsd:element name="idTechnicalParameter" type="xsd:QName"></xsd:element>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="removeTechnicalParameter">
+				<xsd:complexType>
+					<xsd:sequence>
+
+						<xsd:element name="in" type="xsd:string"></xsd:element>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="removeTechnicalParameterResponse">
+				<xsd:complexType>
+					<xsd:sequence>
+
+						<xsd:element ref="model:TechnicalParameter"></xsd:element>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="createTechnicalFault">
+				<xsd:complexType>
+					<xsd:sequence>
+
+						<xsd:element ref="model:TechnicalFault"></xsd:element>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="createTechnicalFaultResponse">
+				<xsd:complexType>
+					<xsd:sequence>
+
+						<xsd:element name="idTechnicalFault" type="xsd:QName"></xsd:element>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="findTechnicalFaults">
+				<xsd:complexType>
+					<xsd:sequence>
+
+						<xsd:element name="in" type="xsd:string"></xsd:element>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="findTechnicalFaultsResponse">
+				<xsd:complexType>
+					<xsd:sequence>
+
+						<xsd:element ref="model:TechnicalFault" maxOccurs="unbounded"
+							minOccurs="0"></xsd:element>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="getTechnicalFault">
+				<xsd:complexType>
+					<xsd:sequence>
+
+						<xsd:element name="idTechnicalFault" type="xsd:QName"></xsd:element>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="getTechnicalFaultResponse">
+				<xsd:complexType>
+					<xsd:sequence>
+
+						<xsd:element ref="model:TechnicalFault"></xsd:element>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="updateTechnicalFault">
+				<xsd:complexType>
+					<xsd:sequence>
+
+						<xsd:element ref="model:TechnicalFault"></xsd:element>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="updateTechnicalFaultResponse">
+				<xsd:complexType>
+					<xsd:sequence>
+
+						<xsd:element name="idTechnicalFault" type="xsd:QName">
+						</xsd:element>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="removeTechnicalFault">
+				<xsd:complexType>
+					<xsd:sequence>
+
+						<xsd:element name="in" type="xsd:string"></xsd:element>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="removeTechnicalFaultResponse">
+				<xsd:complexType>
+					<xsd:sequence>
+
+						<xsd:element ref="model:TechnicalFault"></xsd:element>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="createTechnicalCondition">
+				<xsd:complexType>
+					<xsd:sequence>
+
+						<xsd:element ref="model:TechnicalCondition"></xsd:element>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="createTechnicalConditionResponse">
+				<xsd:complexType>
+					<xsd:sequence>
+
+						<xsd:element name="idTechnicalCondition" type="xsd:QName"></xsd:element>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="findTechnicalConditions">
+				<xsd:complexType>
+					<xsd:sequence>
+
+						<xsd:element name="in" type="xsd:string"></xsd:element>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="findTechnicalConditionsResponse">
+				<xsd:complexType>
+					<xsd:sequence>
+
+						<xsd:element ref="model:TechnicalCondition" maxOccurs="unbounded"
+							minOccurs="0"></xsd:element>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="getTechnicalCondition">
+				<xsd:complexType>
+					<xsd:sequence>
+
+						<xsd:element name="idTechnicalCondition" type="xsd:string"></xsd:element>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="getTechnicalConditionResponse">
+				<xsd:complexType>
+					<xsd:sequence>
+
+						<xsd:element ref="model:TechnicalCondition"></xsd:element>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="updateTechnicalCondition">
+				<xsd:complexType>
+					<xsd:sequence>
+
+						<xsd:element ref="model:TechnicalCondition"></xsd:element>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="updateTechnicalConditionResponse">
+				<xsd:complexType>
+					<xsd:sequence>
+
+						<xsd:element name="idTechnicalCondition" type="xsd:QName">
+						</xsd:element>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="removeTechnicalCondition">
+				<xsd:complexType>
+					<xsd:sequence>
+
+						<xsd:element name="in" type="xsd:string"></xsd:element>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="removeTechnicalConditionResponse">
+				<xsd:complexType>
+					<xsd:sequence>
+
+						<xsd:element ref="model:TechnicalCondition"></xsd:element>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="createTechnicalProfile">
+				<xsd:complexType>
+					<xsd:sequence>
+
+						<xsd:element ref="model:TechnicalProfile"></xsd:element>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="createTechnicalProfileResponse">
+				<xsd:complexType>
+					<xsd:sequence>
+
+						<xsd:element name="idTechnicalProfile" type="xsd:string"></xsd:element>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="findTechnicalProfiles">
+				<xsd:complexType>
+					<xsd:sequence>
+
+						<xsd:element name="in" type="xsd:string"></xsd:element>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="findTechnicalProfilesResponse">
+				<xsd:complexType>
+					<xsd:sequence>
+
+						<xsd:element ref="model:TechnicalProfile" maxOccurs="unbounded"
+							minOccurs="0"></xsd:element>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="getTechnicalProfile">
+				<xsd:complexType>
+					<xsd:sequence>
+
+						<xsd:element name="idTechnicalProfile" type="xsd:QName"></xsd:element>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="getTechnicalProfileResponse">
+				<xsd:complexType>
+					<xsd:sequence>
+
+						<xsd:element ref="model:TechnicalProfile"></xsd:element>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="updateTechnicalProfile">
+				<xsd:complexType>
+					<xsd:sequence>
+
+						<xsd:element ref="model:TechnicalProfile"></xsd:element>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="updateTechnicalProfileResponse">
+				<xsd:complexType>
+					<xsd:sequence>
+
+						<xsd:element name="idTechnicalProfile" type="xsd:QName">
+						</xsd:element>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="removeTechnicalProfile">
+				<xsd:complexType>
+					<xsd:sequence>
+
+						<xsd:element name="in" type="xsd:string"></xsd:element>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="removeTechnicalProfileResponse">
+				<xsd:complexType>
+					<xsd:sequence>
+
+						<xsd:element ref="model:TechnicalProfile"></xsd:element>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="createTechnicalProtocol">
+				<xsd:complexType>
+					<xsd:sequence>
+
+						<xsd:element ref="model:TechnicalProtocol"></xsd:element>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="createTechnicalProtocolResponse">
+				<xsd:complexType>
+					<xsd:sequence>
+
+						<xsd:element name="idTechnicalProtocol" type="xsd:QName"></xsd:element>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="findTechnicalProtocols">
+				<xsd:complexType>
+					<xsd:sequence>
+
+						<xsd:element name="in" type="xsd:string"></xsd:element>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="findTechnicalProtocolsResponse">
+				<xsd:complexType>
+					<xsd:sequence>
+
+						<xsd:element ref="model:TechnicalProtocol" maxOccurs="unbounded"
+							minOccurs="0"></xsd:element>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="getTechnicalProtocol">
+				<xsd:complexType>
+					<xsd:sequence>
+
+						<xsd:element name="idTechnicalProtocol" type="xsd:QName"></xsd:element>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="getTechnicalProtocolResponse">
+				<xsd:complexType>
+					<xsd:sequence>
+
+						<xsd:element ref="model:TechnicalProtocol"></xsd:element>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="updateTechnicalProtocol">
+				<xsd:complexType>
+					<xsd:sequence>
+
+						<xsd:element ref="model:TechnicalProtocol"></xsd:element>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="updateTechnicalProtocolResponse">
+				<xsd:complexType>
+					<xsd:sequence>
+
+						<xsd:element name="idTechnicalProtocol" type="xsd:QName">
+						</xsd:element>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="removeTechnicalProtocol">
+				<xsd:complexType>
+					<xsd:sequence>
+
+						<xsd:element name="in" type="xsd:string"></xsd:element>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="removeTechnicalProtocolResponse">
+				<xsd:complexType>
+					<xsd:sequence>
+
+						<xsd:element ref="model:TechnicalProtocol"></xsd:element>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="createCapability">
+				<xsd:complexType>
+					<xsd:sequence>
+
+						<xsd:element ref="model:Capability"></xsd:element>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="createCapabilityResponse">
+				<xsd:complexType>
+					<xsd:sequence>
+
+						<xsd:element name="idCapability" type="xsd:string"></xsd:element>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="findCapabilities">
+				<xsd:complexType>
+					<xsd:sequence>
+
+						<xsd:element name="in" type="xsd:string"></xsd:element>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="findCapabilitiesResponse">
+				<xsd:complexType>
+					<xsd:sequence>
+
+						<xsd:element name="out" type="xsd:string"></xsd:element>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="getCapability">
+				<xsd:complexType>
+					<xsd:sequence>
+
+						<xsd:element name="idCapability" type="xsd:string"></xsd:element>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="getCapabilityResponse">
+				<xsd:complexType>
+					<xsd:sequence>
+
+						<xsd:element ref="model:Capability"></xsd:element>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="updateCapability">
+				<xsd:complexType>
+					<xsd:sequence>
+
+						<xsd:element name="idCapability" type="xsd:string"></xsd:element>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="updateCapabilityResponse">
+				<xsd:complexType>
+					<xsd:sequence>
+
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="removeCapability">
+				<xsd:complexType>
+					<xsd:sequence>
+
+						<xsd:element name="in" type="xsd:string"></xsd:element>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="removeCapabilityResponse">
+				<xsd:complexType>
+					<xsd:sequence>
+
+						<xsd:element name="out" type="xsd:string"></xsd:element>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="publishServiceFault">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element ref="tns:Fault">
+						</xsd:element>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="getServiceFault">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element ref="tns:Fault">
+						</xsd:element>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="removeServiceFault">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element ref="tns:Fault">
+						</xsd:element>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="updateServiceFault">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element ref="tns:Fault">
+						</xsd:element>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+
+			<xsd:element name="subscribeOnService">
+				<xsd:complexType>
+					<xsd:sequence>
+
+						<xsd:element name="in" type="xsd:string"></xsd:element>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="subscribeOnServiceResponse">
+				<xsd:complexType>
+					<xsd:sequence>
+
+						<xsd:element name="out" type="xsd:string"></xsd:element>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="getTechnicalInterfaceFault">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element ref="tns:Fault">
+						</xsd:element>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="getTechnicalOperationFault">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element ref="tns:Fault">
+						</xsd:element>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="getTechnicalParameterFault">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element ref="tns:Fault">
+						</xsd:element>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="getTechnicalConditionFault">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element ref="tns:Fault">
+						</xsd:element>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="getTechnicalProfileFault">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element ref="tns:Fault">
+						</xsd:element>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="getTechnicalProtocolFault">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element ref="tns:Fault">
+						</xsd:element>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+
+			<xsd:attribute name="NewAttribute" type="xsd:string"></xsd:attribute>
+
+			<xsd:element name="addEndPoint">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="idTechnicalProtocol" type="xsd:string"></xsd:element>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="addEndPointResponse">
+				<xsd:complexType>
+					<xsd:sequence>
+
+						<xsd:element name="address" type="xsd:anyURI"></xsd:element>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="findServicesFault">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element ref="tns:Fault">
+						</xsd:element>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="createTechnicalInterfaceFault">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element ref="tns:Fault">
+						</xsd:element>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="findTechnicalInterfacesFault">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element ref="tns:Fault">
+						</xsd:element>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="updateTechnicalInterfaceFault">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element ref="tns:Fault">
+						</xsd:element>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="removeTechnicalInterfaceFault">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element ref="tns:Fault">
+						</xsd:element>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="findTechnicalOperationsFault">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element ref="tns:Fault">
+						</xsd:element>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="updateTechnicalOperationFault">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element ref="tns:Fault">
+						</xsd:element>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="updateTechnicalProtocolFault">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element ref="tns:Fault">
+						</xsd:element>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="updateTechnicalProfileFault">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element ref="tns:Fault">
+						</xsd:element>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="updateTechnicalConditionFault">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element ref="tns:Fault">
+						</xsd:element>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="updateTechnicalFaultFault">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element ref="tns:Fault">
+						</xsd:element>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="updateTechnicalParameterFault">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element ref="tns:Fault">
+						</xsd:element>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="findTechnicalConditionsFault">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element ref="tns:Fault">
+						</xsd:element>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="createTechnicalConditionFault">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element ref="tns:Fault">
+						</xsd:element>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="removeTechnicalFaultFault">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element ref="tns:Fault">
+						</xsd:element>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="getTechnicalFaultFault">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element ref="tns:Fault">
+						</xsd:element>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="findTechnicalFaultsFault">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element ref="tns:Fault">
+						</xsd:element>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="createTechnicalFaultFault">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element ref="tns:Fault">
+						</xsd:element>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="removeTechnicalParameterFault">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element ref="tns:Fault">
+						</xsd:element>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="findTechnicalProfilesFault">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element ref="tns:Fault">
+						</xsd:element>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="createTechnicalProfileFault">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element ref="tns:Fault">
+						</xsd:element>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="removeTechnicalConditionFault">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element ref="tns:Fault">
+						</xsd:element>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="createTechnicalProtocolFault">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element ref="tns:Fault">
+						</xsd:element>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="removeTechnicalProfileFault">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element ref="tns:Fault">
+						</xsd:element>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="findTechnicalProtocolsFault">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element ref="tns:Fault">
+						</xsd:element>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="removeTechnicalProtocolFault">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element ref="tns:Fault">
+						</xsd:element>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="subscribeOnServiceFault">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element ref="tns:Fault">
+						</xsd:element>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="addEndPointFault">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element ref="tns:Fault">
+						</xsd:element>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="createTechnicalParameterFault">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element ref="tns:Fault">
+						</xsd:element>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="findTechnicalParametersFault">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element ref="tns:Fault">
+						</xsd:element>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="removeTechnicalOperationFault">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element ref="tns:Fault">
+						</xsd:element>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="createTechnicalOperationFault">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element ref="tns:Fault">
+						</xsd:element>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+		
+            <xsd:element name="resourceIdentifier">
+            	<xsd:complexType>
+            		<xsd:sequence>
+            			<xsd:element name="id" type="xsd:QName">
+            			</xsd:element>
+            			<xsd:element name="resourceType"
+            				type="xsd:string">
+            			</xsd:element>
+            		</xsd:sequence>
+            	</xsd:complexType></xsd:element>
+        </xsd:schema>
+	</wsdl:types>
+
+
+	<wsdl:message name="publishServiceRequest">
+		<wsdl:part name="parameters" element="tns:publishService"></wsdl:part>
+	</wsdl:message>
+	<wsdl:message name="publishServiceResponse">
+		<wsdl:part name="parameters" element="tns:publishServiceResponse"></wsdl:part>
+	</wsdl:message>
+	<wsdl:message name="findServicesRequest">
+		<wsdl:part name="parameters" element="tns:findServices"></wsdl:part>
+	</wsdl:message>
+	<wsdl:message name="findServicesResponse">
+		<wsdl:part name="parameters" element="tns:findServicesResponse"></wsdl:part>
+	</wsdl:message>
+	<wsdl:message name="getServiceRequest">
+		<wsdl:part name="parameters" element="tns:getService"></wsdl:part>
+	</wsdl:message>
+	<wsdl:message name="getServiceResponse">
+		<wsdl:part name="parameters" element="tns:getServiceResponse"></wsdl:part>
+	</wsdl:message>
+	<wsdl:message name="updateServiceRequest">
+		<wsdl:part name="parameters" element="tns:updateService"></wsdl:part>
+	</wsdl:message>
+	<wsdl:message name="updateServiceResponse">
+		<wsdl:part name="parameters" element="tns:updateServiceResponse"></wsdl:part>
+	</wsdl:message>
+	<wsdl:message name="removeServiceRequest">
+		<wsdl:part name="parameters" element="tns:removeService"></wsdl:part>
+	</wsdl:message>
+	<wsdl:message name="removeServiceResponse">
+		<wsdl:part name="parameters" element="tns:removeServiceResponse"></wsdl:part>
+	</wsdl:message>
+	<wsdl:message name="createTechnicalInterfaceRequest">
+		<wsdl:part name="parameters" element="tns:createTechnicalInterface"></wsdl:part>
+	</wsdl:message>
+	<wsdl:message name="createTechnicalInterfaceResponse">
+		<wsdl:part name="parameters" element="tns:createTechnicalInterfaceResponse"></wsdl:part>
+	</wsdl:message>
+	<wsdl:message name="findTechnicalInterfacesRequest">
+		<wsdl:part name="parameters" element="tns:findTechnicalInterfaces"></wsdl:part>
+	</wsdl:message>
+	<wsdl:message name="findTechnicalInterfacesResponse">
+		<wsdl:part name="parameters" element="tns:findTechnicalInterfacesResponse"></wsdl:part>
+	</wsdl:message>
+	<wsdl:message name="getTechnicalInterfaceRequest">
+		<wsdl:part name="parameters" element="tns:getTechnicalInterface"></wsdl:part>
+	</wsdl:message>
+	<wsdl:message name="getTechnicalInterfaceResponse">
+		<wsdl:part name="parameters" element="tns:getTechnicalInterfaceResponse"></wsdl:part>
+	</wsdl:message>
+	<wsdl:message name="updateTechnicalInterfaceRequest">
+		<wsdl:part name="parameters" element="tns:updateTechnicalInterface"></wsdl:part>
+	</wsdl:message>
+	<wsdl:message name="updateTechnicalInterfaceResponse">
+		<wsdl:part name="parameters" element="tns:updateTechnicalInterfaceResponse"></wsdl:part>
+	</wsdl:message>
+	<wsdl:message name="removeTechnicalInterfaceRequest">
+		<wsdl:part name="parameters" element="tns:removeTechnicalInterface"></wsdl:part>
+	</wsdl:message>
+	<wsdl:message name="removeTechnicalInterfaceResponse">
+		<wsdl:part name="parameters" element="tns:removeTechnicalInterfaceResponse"></wsdl:part>
+	</wsdl:message>
+	<wsdl:message name="createTechnicalOperationRequest">
+		<wsdl:part name="parameters" element="tns:createTechnicalOperation"></wsdl:part>
+	</wsdl:message>
+	<wsdl:message name="createTechnicalOperationResponse">
+		<wsdl:part name="parameters" element="tns:createTechnicalOperationResponse"></wsdl:part>
+	</wsdl:message>
+	<wsdl:message name="findTechnicalOperationsRequest">
+		<wsdl:part name="parameters" element="tns:findTechnicalOperations"></wsdl:part>
+	</wsdl:message>
+	<wsdl:message name="findTechnicalOperationsResponse">
+		<wsdl:part name="parameters" element="tns:findTechnicalOperationsResponse"></wsdl:part>
+	</wsdl:message>
+	<wsdl:message name="getTechnicalOperationRequest">
+		<wsdl:part name="parameters" element="tns:getTechnicalOperation"></wsdl:part>
+	</wsdl:message>
+	<wsdl:message name="getTechnicalOperationResponse">
+		<wsdl:part name="parameters" element="tns:getTechnicalOperationResponse"></wsdl:part>
+	</wsdl:message>
+	<wsdl:message name="updateTechnicalOperationRequest">
+		<wsdl:part name="parameters" element="tns:updateTechnicalOperation"></wsdl:part>
+	</wsdl:message>
+	<wsdl:message name="updateTechnicalOperationResponse">
+		<wsdl:part name="parameters" element="tns:updateTechnicalOperationResponse"></wsdl:part>
+	</wsdl:message>
+	<wsdl:message name="removeTechnicalOperationRequest">
+		<wsdl:part name="parameters" element="tns:removeTechnicalOperation"></wsdl:part>
+	</wsdl:message>
+	<wsdl:message name="removeTechnicalOperationResponse">
+		<wsdl:part name="parameters" element="tns:removeTechnicalOperationResponse"></wsdl:part>
+	</wsdl:message>
+	<wsdl:message name="createTechnicalParameterRequest">
+		<wsdl:part name="parameters" element="tns:createTechnicalParameter"></wsdl:part>
+	</wsdl:message>
+	<wsdl:message name="createTechnicalParameterResponse">
+		<wsdl:part name="parameters" element="tns:createTechnicalParameterResponse"></wsdl:part>
+	</wsdl:message>
+	<wsdl:message name="findTechnicalParametersRequest">
+		<wsdl:part name="parameters" element="tns:findTechnicalParameters"></wsdl:part>
+	</wsdl:message>
+	<wsdl:message name="findTechnicalParametersResponse">
+		<wsdl:part name="parameters" element="tns:findTechnicalParametersResponse"></wsdl:part>
+	</wsdl:message>
+	<wsdl:message name="getTechnicalParameterRequest">
+		<wsdl:part name="parameters" element="tns:getTechnicalParameter"></wsdl:part>
+	</wsdl:message>
+	<wsdl:message name="getTechnicalParameterResponse">
+		<wsdl:part name="parameters" element="tns:getTechnicalParameterResponse"></wsdl:part>
+	</wsdl:message>
+	<wsdl:message name="updateTechnicalParameterRequest">
+		<wsdl:part name="parameters" element="tns:updateTechnicalParameter"></wsdl:part>
+	</wsdl:message>
+	<wsdl:message name="updateTechnicalParameterResponse">
+		<wsdl:part name="parameters" element="tns:updateTechnicalParameterResponse"></wsdl:part>
+	</wsdl:message>
+	<wsdl:message name="removeTechnicalParameterRequest">
+		<wsdl:part name="parameters" element="tns:removeTechnicalParameter"></wsdl:part>
+	</wsdl:message>
+	<wsdl:message name="removeTechnicalParameterResponse">
+		<wsdl:part name="parameters" element="tns:removeTechnicalParameterResponse"></wsdl:part>
+	</wsdl:message>
+	<wsdl:message name="createTechnicalFaultRequest">
+		<wsdl:part name="parameters" element="tns:createTechnicalFault"></wsdl:part>
+	</wsdl:message>
+	<wsdl:message name="createTechnicalFaultResponse">
+		<wsdl:part name="parameters" element="tns:createTechnicalFaultResponse"></wsdl:part>
+	</wsdl:message>
+	<wsdl:message name="findTechnicalFaultsRequest">
+		<wsdl:part name="parameters" element="tns:findTechnicalFaults"></wsdl:part>
+	</wsdl:message>
+	<wsdl:message name="findTechnicalFaultsResponse">
+		<wsdl:part name="parameters" element="tns:findTechnicalFaultsResponse"></wsdl:part>
+	</wsdl:message>
+	<wsdl:message name="getTechnicalFaultRequest">
+		<wsdl:part name="parameters" element="tns:getTechnicalFault"></wsdl:part>
+	</wsdl:message>
+	<wsdl:message name="getTechnicalFaultResponse">
+		<wsdl:part name="parameters" element="tns:getTechnicalFaultResponse"></wsdl:part>
+	</wsdl:message>
+	<wsdl:message name="updateTechnicalFaultRequest">
+		<wsdl:part name="parameters" element="tns:updateTechnicalFault"></wsdl:part>
+	</wsdl:message>
+	<wsdl:message name="updateTechnicalFaultResponse">
+		<wsdl:part name="parameters" element="tns:updateTechnicalFaultResponse"></wsdl:part>
+	</wsdl:message>
+	<wsdl:message name="removeTechnicalFaultRequest">
+		<wsdl:part name="parameters" element="tns:removeTechnicalFault"></wsdl:part>
+	</wsdl:message>
+	<wsdl:message name="removeTechnicalFaultResponse">
+		<wsdl:part name="parameters" element="tns:removeTechnicalFaultResponse"></wsdl:part>
+	</wsdl:message>
+	<wsdl:message name="createTechnicalConditionRequest">
+		<wsdl:part name="parameters" element="tns:createTechnicalCondition"></wsdl:part>
+	</wsdl:message>
+	<wsdl:message name="createTechnicalConditionResponse">
+		<wsdl:part name="parameters" element="tns:createTechnicalConditionResponse"></wsdl:part>
+	</wsdl:message>
+	<wsdl:message name="findTechnicalConditionsRequest">
+		<wsdl:part name="parameters" element="tns:findTechnicalConditions"></wsdl:part>
+	</wsdl:message>
+	<wsdl:message name="findTechnicalConditionsResponse">
+		<wsdl:part name="parameters" element="tns:findTechnicalConditionsResponse"></wsdl:part>
+	</wsdl:message>
+	<wsdl:message name="getTechnicalConditionRequest">
+		<wsdl:part name="parameters" element="tns:getTechnicalCondition"></wsdl:part>
+	</wsdl:message>
+	<wsdl:message name="getTechnicalConditionResponse">
+		<wsdl:part name="parameters" element="tns:getTechnicalConditionResponse"></wsdl:part>
+	</wsdl:message>
+	<wsdl:message name="updateTechnicalConditionRequest">
+		<wsdl:part name="parameters" element="tns:updateTechnicalCondition"></wsdl:part>
+	</wsdl:message>
+	<wsdl:message name="updateTechnicalConditionResponse">
+		<wsdl:part name="parameters" element="tns:updateTechnicalConditionResponse"></wsdl:part>
+	</wsdl:message>
+	<wsdl:message name="removeTechnicalConditionRequest">
+		<wsdl:part name="parameters" element="tns:removeTechnicalCondition"></wsdl:part>
+	</wsdl:message>
+	<wsdl:message name="removeTechnicalConditionResponse">
+		<wsdl:part name="parameters" element="tns:removeTechnicalConditionResponse"></wsdl:part>
+	</wsdl:message>
+	<wsdl:message name="createTechnicalProfileRequest">
+		<wsdl:part name="parameters" element="tns:createTechnicalProfile"></wsdl:part>
+	</wsdl:message>
+	<wsdl:message name="createTechnicalProfileResponse">
+		<wsdl:part name="parameters" element="tns:createTechnicalProfileResponse"></wsdl:part>
+	</wsdl:message>
+	<wsdl:message name="findTechnicalProfilesRequest">
+		<wsdl:part name="parameters" element="tns:findTechnicalProfiles"></wsdl:part>
+	</wsdl:message>
+	<wsdl:message name="findTechnicalProfilesResponse">
+		<wsdl:part name="parameters" element="tns:findTechnicalProfilesResponse"></wsdl:part>
+	</wsdl:message>
+	<wsdl:message name="getTechnicalProfileRequest">
+		<wsdl:part name="parameters" element="tns:getTechnicalProfile"></wsdl:part>
+	</wsdl:message>
+	<wsdl:message name="getTechnicalProfileResponse">
+		<wsdl:part name="parameters" element="tns:getTechnicalProfileResponse"></wsdl:part>
+	</wsdl:message>
+	<wsdl:message name="updateTechnicalProfileRequest">
+		<wsdl:part name="parameters" element="tns:updateTechnicalProfile"></wsdl:part>
+	</wsdl:message>
+	<wsdl:message name="updateTechnicalProfileResponse">
+		<wsdl:part name="parameters" element="tns:updateTechnicalProfileResponse"></wsdl:part>
+	</wsdl:message>
+	<wsdl:message name="removeTechnicalProfileRequest">
+		<wsdl:part name="parameters" element="tns:removeTechnicalProfile"></wsdl:part>
+	</wsdl:message>
+	<wsdl:message name="removeTechnicalProfileResponse">
+		<wsdl:part name="parameters" element="tns:removeTechnicalProfileResponse"></wsdl:part>
+	</wsdl:message>
+	<wsdl:message name="createTechnicalProtocolRequest">
+		<wsdl:part name="parameters" element="tns:createTechnicalProtocol"></wsdl:part>
+	</wsdl:message>
+	<wsdl:message name="createTechnicalProtocolResponse">
+		<wsdl:part name="parameters" element="tns:createTechnicalProtocolResponse"></wsdl:part>
+	</wsdl:message>
+	<wsdl:message name="findTechnicalProtocolsRequest">
+		<wsdl:part name="parameters" element="tns:findTechnicalProtocols"></wsdl:part>
+	</wsdl:message>
+	<wsdl:message name="findTechnicalProtocolsResponse">
+		<wsdl:part name="parameters" element="tns:findTechnicalProtocolsResponse"></wsdl:part>
+	</wsdl:message>
+	<wsdl:message name="getTechnicalProtocolRequest">
+		<wsdl:part name="parameters" element="tns:getTechnicalProtocol"></wsdl:part>
+	</wsdl:message>
+	<wsdl:message name="getTechnicalProtocolResponse">
+		<wsdl:part name="parameters" element="tns:getTechnicalProtocolResponse"></wsdl:part>
+	</wsdl:message>
+	<wsdl:message name="updateTechnicalProtocolRequest">
+		<wsdl:part name="parameters" element="tns:updateTechnicalProtocol"></wsdl:part>
+	</wsdl:message>
+	<wsdl:message name="updateTechnicalProtocolResponse">
+		<wsdl:part name="parameters" element="tns:updateTechnicalProtocolResponse"></wsdl:part>
+	</wsdl:message>
+	<wsdl:message name="removeTechnicalProtocolRequest">
+		<wsdl:part name="parameters" element="tns:removeTechnicalProtocol"></wsdl:part>
+	</wsdl:message>
+	<wsdl:message name="removeTechnicalProtocolResponse">
+		<wsdl:part name="parameters" element="tns:removeTechnicalProtocolResponse"></wsdl:part>
+	</wsdl:message>
+	<wsdl:message name="createCapabilityRequest">
+		<wsdl:part name="parameters" element="tns:createCapability"></wsdl:part>
+	</wsdl:message>
+	<wsdl:message name="createCapabilityResponse">
+		<wsdl:part name="parameters" element="tns:createCapabilityResponse"></wsdl:part>
+	</wsdl:message>
+	<wsdl:message name="findCapabilitiesRequest">
+		<wsdl:part name="parameters" element="tns:findCapabilities"></wsdl:part>
+	</wsdl:message>
+	<wsdl:message name="findCapabilitiesResponse">
+		<wsdl:part name="parameters" element="tns:findCapabilitiesResponse"></wsdl:part>
+	</wsdl:message>
+	<wsdl:message name="getCapabilityRequest">
+		<wsdl:part name="parameters" element="tns:getCapability"></wsdl:part>
+	</wsdl:message>
+	<wsdl:message name="getCapabilityResponse">
+		<wsdl:part name="parameters" element="tns:getCapabilityResponse"></wsdl:part>
+	</wsdl:message>
+	<wsdl:message name="updateCapabilityRequest">
+		<wsdl:part name="parameters" element="tns:updateCapability"></wsdl:part>
+	</wsdl:message>
+	<wsdl:message name="updateCapabilityResponse">
+		<wsdl:part name="parameters" element="tns:updateCapabilityResponse"></wsdl:part>
+	</wsdl:message>
+	<wsdl:message name="removeCapabilityRequest">
+		<wsdl:part name="parameters" element="tns:removeCapability"></wsdl:part>
+	</wsdl:message>
+	<wsdl:message name="removeCapabilityResponse">
+		<wsdl:part name="parameters" element="tns:removeCapabilityResponse"></wsdl:part>
+	</wsdl:message>
+	<wsdl:message name="publishServiceFault">
+		<wsdl:part name="parameters" element="tns:publishServiceFault"></wsdl:part>
+	</wsdl:message>
+	<wsdl:message name="getServiceFault">
+		<wsdl:part name="parameters" element="tns:getServiceFault"></wsdl:part>
+	</wsdl:message>
+	<wsdl:message name="removeServiceFault">
+		<wsdl:part name="parameters" element="tns:removeServiceFault"></wsdl:part>
+	</wsdl:message>
+	<wsdl:message name="updateServiceFault">
+		<wsdl:part name="parameters" element="tns:updateServiceFault"></wsdl:part>
+	</wsdl:message>
+	<wsdl:message name="subscribeOnServiceRequest">
+		<wsdl:part name="parameters" element="tns:subscribeOnService"></wsdl:part>
+	</wsdl:message>
+	<wsdl:message name="subscribeOnServiceResponse">
+		<wsdl:part name="parameters" element="tns:subscribeOnServiceResponse"></wsdl:part>
+	</wsdl:message>
+	<wsdl:message name="getTechnicalInterfaceFault">
+		<wsdl:part name="parameters" element="tns:getTechnicalInterfaceFault"></wsdl:part>
+	</wsdl:message>
+	<wsdl:message name="getTechnicalOperationFault">
+		<wsdl:part name="parameters" element="tns:getTechnicalOperationFault"></wsdl:part>
+	</wsdl:message>
+	<wsdl:message name="getTechnicalParameterFault">
+		<wsdl:part name="parameters" element="tns:getTechnicalParameterFault"></wsdl:part>
+	</wsdl:message>
+	<wsdl:message name="getTechnicalConditionFault">
+		<wsdl:part name="parameters" element="tns:getTechnicalConditionFault"></wsdl:part>
+	</wsdl:message>
+	<wsdl:message name="getTechnicalProfileFault">
+		<wsdl:part name="parameters" element="tns:getTechnicalProfileFault"></wsdl:part>
+	</wsdl:message>
+	<wsdl:message name="getTechnicalProtocolFault">
+		<wsdl:part name="parameters" element="tns:getTechnicalProtocolFault"></wsdl:part>
+	</wsdl:message>
+	<wsdl:message name="addEndPointRequest">
+		<wsdl:part name="parameters" element="tns:addEndPoint"></wsdl:part>
+	</wsdl:message>
+	<wsdl:message name="addEndPointResponse">
+		<wsdl:part name="parameters" element="tns:addEndPointResponse"></wsdl:part>
+	</wsdl:message>
+	<wsdl:message name="findServicesFault">
+		<wsdl:part name="parameters" element="tns:findServicesFault"></wsdl:part>
+	</wsdl:message>
+	<wsdl:message name="createTechnicalInterfaceFault">
+		<wsdl:part name="parameters" element="tns:createTechnicalInterfaceFault"></wsdl:part>
+	</wsdl:message>
+	<wsdl:message name="findTechnicalInterfacesFault">
+		<wsdl:part name="parameters" element="tns:findTechnicalInterfacesFault"></wsdl:part>
+	</wsdl:message>
+	<wsdl:message name="updateTechnicalInterfaceFault">
+		<wsdl:part name="parameters" element="tns:updateTechnicalInterfaceFault"></wsdl:part>
+	</wsdl:message>
+	<wsdl:message name="removeTechnicalInterfaceFault">
+		<wsdl:part name="parameters" element="tns:removeTechnicalInterfaceFault"></wsdl:part>
+	</wsdl:message>
+	<wsdl:message name="findTechnicalOperationsFault">
+		<wsdl:part name="parameters" element="tns:findTechnicalOperationsFault"></wsdl:part>
+	</wsdl:message>
+	<wsdl:message name="updateTechnicalOperationFault">
+		<wsdl:part name="parameters" element="tns:updateTechnicalOperationFault"></wsdl:part>
+	</wsdl:message>
+	<wsdl:message name="updateTechnicalProtocolFault">
+		<wsdl:part name="parameters" element="tns:updateTechnicalProtocolFault"></wsdl:part>
+	</wsdl:message>
+	<wsdl:message name="updateTechnicalProfileFault">
+		<wsdl:part name="parameters" element="tns:updateTechnicalProfileFault"></wsdl:part>
+	</wsdl:message>
+	<wsdl:message name="updateTechnicalConditionFault">
+		<wsdl:part name="parameters" element="tns:updateTechnicalConditionFault"></wsdl:part>
+	</wsdl:message>
+	<wsdl:message name="updateTechnicalFaultFault">
+		<wsdl:part name="parameters" element="tns:updateTechnicalFaultFault"></wsdl:part>
+	</wsdl:message>
+	<wsdl:message name="updateTechnicalParameterFault">
+		<wsdl:part name="parameters" element="tns:updateTechnicalParameterFault"></wsdl:part>
+	</wsdl:message>
+	<wsdl:message name="findTechnicalConditionsFault">
+		<wsdl:part name="parameters" element="tns:findTechnicalConditionsFault"></wsdl:part>
+	</wsdl:message>
+	<wsdl:message name="createTechnicalConditionFault">
+		<wsdl:part name="parameters" element="tns:createTechnicalConditionFault"></wsdl:part>
+	</wsdl:message>
+	<wsdl:message name="removeTechnicalFaultFault">
+		<wsdl:part name="parameters" element="tns:removeTechnicalFaultFault"></wsdl:part>
+	</wsdl:message>
+	<wsdl:message name="getTechnicalFaultFault">
+		<wsdl:part name="parameters" element="tns:getTechnicalFaultFault"></wsdl:part>
+	</wsdl:message>
+	<wsdl:message name="findTechnicalFaultsFault">
+		<wsdl:part name="parameters" element="tns:findTechnicalFaultsFault"></wsdl:part>
+	</wsdl:message>
+	<wsdl:message name="createTechnicalFaultFault">
+		<wsdl:part name="parameters" element="tns:createTechnicalFaultFault"></wsdl:part>
+	</wsdl:message>
+	<wsdl:message name="removeTechnicalParameterFault">
+		<wsdl:part name="parameters" element="tns:removeTechnicalParameterFault"></wsdl:part>
+	</wsdl:message>
+	<wsdl:message name="findTechnicalProfilesFault">
+		<wsdl:part name="parameters" element="tns:findTechnicalProfilesFault"></wsdl:part>
+	</wsdl:message>
+	<wsdl:message name="createTechnicalProfileFault">
+		<wsdl:part name="parameters" element="tns:createTechnicalProfileFault"></wsdl:part>
+	</wsdl:message>
+	<wsdl:message name="removeTechnicalConditionFault">
+		<wsdl:part name="parameters" element="tns:removeTechnicalConditionFault"></wsdl:part>
+	</wsdl:message>
+	<wsdl:message name="createTechnicalProtocolFault">
+		<wsdl:part name="parameters" element="tns:createTechnicalProtocolFault"></wsdl:part>
+	</wsdl:message>
+	<wsdl:message name="removeTechnicalProfileFault">
+		<wsdl:part name="parameters" element="tns:removeTechnicalProfileFault"></wsdl:part>
+	</wsdl:message>
+	<wsdl:message name="findTechnicalProtocolsFault">
+		<wsdl:part name="parameters" element="tns:findTechnicalProtocolsFault"></wsdl:part>
+	</wsdl:message>
+	<wsdl:message name="removeTechnicalProtocolFault">
+		<wsdl:part name="parameters" element="tns:removeTechnicalProtocolFault"></wsdl:part>
+	</wsdl:message>
+	<wsdl:message name="subscribeOnServiceFault">
+		<wsdl:part name="parameters" element="tns:subscribeOnServiceFault"></wsdl:part>
+	</wsdl:message>
+	<wsdl:message name="addEndPointFault">
+		<wsdl:part name="parameters" element="tns:addEndPointFault"></wsdl:part>
+	</wsdl:message>
+	<wsdl:message name="createTechnicalParameterFault">
+		<wsdl:part name="parameters" element="tns:createTechnicalParameterFault"></wsdl:part>
+	</wsdl:message>
+	<wsdl:message name="findTechnicalParametersFault">
+		<wsdl:part name="parameters" element="tns:findTechnicalParametersFault"></wsdl:part>
+	</wsdl:message>
+	<wsdl:message name="removeTechnicalOperationFault">
+		<wsdl:part name="parameters" element="tns:removeTechnicalOperationFault"></wsdl:part>
+	</wsdl:message>
+	<wsdl:message name="createTechnicalOperationFault">
+		<wsdl:part name="parameters" element="tns:createTechnicalOperationFault"></wsdl:part>
+	</wsdl:message>
+	<wsdl:portType name="ServicesManager">
+		<wsdl:operation name="publishService">
+			<wsdl:input message="tns:publishServiceRequest"></wsdl:input>
+			<wsdl:output message="tns:publishServiceResponse"></wsdl:output>
+			<wsdl:fault name="fault" message="tns:publishServiceFault"></wsdl:fault>
+		</wsdl:operation>
+		<wsdl:operation name="findServices">
+			<wsdl:input message="tns:findServicesRequest"></wsdl:input>
+			<wsdl:output message="tns:findServicesResponse"></wsdl:output>
+			<wsdl:fault name="fault" message="tns:findServicesFault"></wsdl:fault>
+		</wsdl:operation>
+		<wsdl:operation name="getService">
+			<wsdl:input message="tns:getServiceRequest"></wsdl:input>
+			<wsdl:output message="tns:getServiceResponse"></wsdl:output>
+			<wsdl:fault name="fault" message="tns:getServiceFault"></wsdl:fault>
+		</wsdl:operation>
+		<wsdl:operation name="updateService">
+			<wsdl:input message="tns:updateServiceRequest"></wsdl:input>
+			<wsdl:output message="tns:updateServiceResponse"></wsdl:output>
+			<wsdl:fault name="fault" message="tns:updateServiceFault"></wsdl:fault>
+		</wsdl:operation>
+		<wsdl:operation name="removeService">
+			<wsdl:input message="tns:removeServiceRequest"></wsdl:input>
+			<wsdl:output message="tns:removeServiceResponse"></wsdl:output>
+			<wsdl:fault name="fault" message="tns:removeServiceFault"></wsdl:fault>
+		</wsdl:operation>
+		<wsdl:operation name="createTechnicalInterface">
+			<wsdl:input message="tns:createTechnicalInterfaceRequest"></wsdl:input>
+			<wsdl:output message="tns:createTechnicalInterfaceResponse"></wsdl:output>
+			<wsdl:fault name="fault" message="tns:createTechnicalInterfaceFault"></wsdl:fault>
+		</wsdl:operation>
+		<wsdl:operation name="findTechnicalInterfaces">
+			<wsdl:input message="tns:findTechnicalInterfacesRequest"></wsdl:input>
+			<wsdl:output message="tns:findTechnicalInterfacesResponse"></wsdl:output>
+			<wsdl:fault name="fault" message="tns:findTechnicalInterfacesFault"></wsdl:fault>
+		</wsdl:operation>
+		<wsdl:operation name="getTechnicalInterface">
+			<wsdl:input message="tns:getTechnicalInterfaceRequest"></wsdl:input>
+			<wsdl:output message="tns:getTechnicalInterfaceResponse"></wsdl:output>
+			<wsdl:fault name="fault" message="tns:getTechnicalInterfaceFault"></wsdl:fault>
+		</wsdl:operation>
+		<wsdl:operation name="updateTechnicalInterface">
+			<wsdl:input message="tns:updateTechnicalInterfaceRequest"></wsdl:input>
+			<wsdl:output message="tns:updateTechnicalInterfaceResponse"></wsdl:output>
+			<wsdl:fault name="fault" message="tns:updateTechnicalInterfaceFault"></wsdl:fault>
+		</wsdl:operation>
+		<wsdl:operation name="removeTechnicalInterface">
+			<wsdl:input message="tns:removeTechnicalInterfaceRequest"></wsdl:input>
+			<wsdl:output message="tns:removeTechnicalInterfaceResponse"></wsdl:output>
+			<wsdl:fault name="fault" message="tns:removeTechnicalInterfaceFault"></wsdl:fault>
+		</wsdl:operation>
+		<wsdl:operation name="createTechnicalOperation">
+			<wsdl:input message="tns:createTechnicalOperationRequest"></wsdl:input>
+			<wsdl:output message="tns:createTechnicalOperationResponse"></wsdl:output>
+			<wsdl:fault name="fault" message="tns:createTechnicalOperationFault"></wsdl:fault>
+		</wsdl:operation>
+		<wsdl:operation name="findTechnicalOperations">
+			<wsdl:input message="tns:findTechnicalOperationsRequest"></wsdl:input>
+			<wsdl:output message="tns:findTechnicalOperationsResponse"></wsdl:output>
+			<wsdl:fault name="fault" message="tns:findTechnicalOperationsFault"></wsdl:fault>
+		</wsdl:operation>
+		<wsdl:operation name="getTechnicalOperation">
+			<wsdl:input message="tns:getTechnicalOperationRequest"></wsdl:input>
+			<wsdl:output message="tns:getTechnicalOperationResponse"></wsdl:output>
+			<wsdl:fault name="fault" message="tns:getTechnicalOperationFault"></wsdl:fault>
+		</wsdl:operation>
+		<wsdl:operation name="updateTechnicalOperation">
+			<wsdl:input message="tns:updateTechnicalOperationRequest"></wsdl:input>
+			<wsdl:output message="tns:updateTechnicalOperationResponse"></wsdl:output>
+			<wsdl:fault name="fault" message="tns:updateTechnicalOperationFault"></wsdl:fault>
+		</wsdl:operation>
+		<wsdl:operation name="removeTechnicalOperation">
+			<wsdl:input message="tns:removeTechnicalOperationRequest"></wsdl:input>
+			<wsdl:output message="tns:removeTechnicalOperationResponse"></wsdl:output>
+			<wsdl:fault name="fault" message="tns:removeTechnicalOperationFault"></wsdl:fault>
+		</wsdl:operation>
+		<wsdl:operation name="createTechnicalParameter">
+			<wsdl:input message="tns:createTechnicalParameterRequest"></wsdl:input>
+			<wsdl:output message="tns:createTechnicalParameterResponse"></wsdl:output>
+			<wsdl:fault name="fault" message="tns:createTechnicalParameterFault"></wsdl:fault>
+		</wsdl:operation>
+		<wsdl:operation name="findTechnicalParameters">
+			<wsdl:input message="tns:findTechnicalParametersRequest"></wsdl:input>
+			<wsdl:output message="tns:findTechnicalParametersResponse"></wsdl:output>
+			<wsdl:fault name="fault" message="tns:findTechnicalParametersFault"></wsdl:fault>
+		</wsdl:operation>
+		<wsdl:operation name="getTechnicalParameter">
+			<wsdl:input message="tns:getTechnicalParameterRequest"></wsdl:input>
+			<wsdl:output message="tns:getTechnicalParameterResponse"></wsdl:output>
+			<wsdl:fault name="fault" message="tns:getTechnicalParameterFault"></wsdl:fault>
+		</wsdl:operation>
+		<wsdl:operation name="updateTechnicalParameter">
+			<wsdl:input message="tns:updateTechnicalParameterRequest"></wsdl:input>
+			<wsdl:output message="tns:updateTechnicalParameterResponse"></wsdl:output>
+			<wsdl:fault name="fault" message="tns:updateTechnicalParameterFault"></wsdl:fault>
+		</wsdl:operation>
+		<wsdl:operation name="removeTechnicalParameter">
+			<wsdl:input message="tns:removeTechnicalParameterRequest"></wsdl:input>
+			<wsdl:output message="tns:removeTechnicalParameterResponse"></wsdl:output>
+			<wsdl:fault name="fault" message="tns:removeTechnicalParameterFault"></wsdl:fault>
+		</wsdl:operation>
+		<wsdl:operation name="createTechnicalFault">
+			<wsdl:input message="tns:createTechnicalFaultRequest"></wsdl:input>
+			<wsdl:output message="tns:createTechnicalFaultResponse"></wsdl:output>
+			<wsdl:fault name="fault" message="tns:createTechnicalFaultFault"></wsdl:fault>
+		</wsdl:operation>
+		<wsdl:operation name="findTechnicalFaults">
+			<wsdl:input message="tns:findTechnicalFaultsRequest"></wsdl:input>
+			<wsdl:output message="tns:findTechnicalFaultsResponse"></wsdl:output>
+			<wsdl:fault name="fault" message="tns:findTechnicalFaultsFault"></wsdl:fault>
+		</wsdl:operation>
+		<wsdl:operation name="getTechnicalFault">
+			<wsdl:input message="tns:getTechnicalFaultRequest"></wsdl:input>
+			<wsdl:output message="tns:getTechnicalFaultResponse"></wsdl:output>
+			<wsdl:fault name="fault" message="tns:getTechnicalFaultFault"></wsdl:fault>
+		</wsdl:operation>
+		<wsdl:operation name="updateTechnicalFault">
+			<wsdl:input message="tns:updateTechnicalFaultRequest"></wsdl:input>
+			<wsdl:output message="tns:updateTechnicalFaultResponse"></wsdl:output>
+			<wsdl:fault name="fault" message="tns:updateTechnicalFaultFault"></wsdl:fault>
+		</wsdl:operation>
+		<wsdl:operation name="removeTechnicalFault">
+			<wsdl:input message="tns:removeTechnicalFaultRequest"></wsdl:input>
+			<wsdl:output message="tns:removeTechnicalFaultResponse"></wsdl:output>
+			<wsdl:fault name="fault" message="tns:removeTechnicalFaultFault"></wsdl:fault>
+		</wsdl:operation>
+		<wsdl:operation name="createTechnicalCondition">
+			<wsdl:input message="tns:createTechnicalConditionRequest"></wsdl:input>
+			<wsdl:output message="tns:createTechnicalConditionResponse"></wsdl:output>
+			<wsdl:fault name="fault" message="tns:createTechnicalConditionFault"></wsdl:fault>
+		</wsdl:operation>
+		<wsdl:operation name="findTechnicalConditions">
+			<wsdl:input message="tns:findTechnicalConditionsRequest"></wsdl:input>
+			<wsdl:output message="tns:findTechnicalConditionsResponse"></wsdl:output>
+			<wsdl:fault name="fault" message="tns:findTechnicalConditionsFault"></wsdl:fault>
+		</wsdl:operation>
+		<wsdl:operation name="getTechnicalCondition">
+			<wsdl:input message="tns:getTechnicalConditionRequest"></wsdl:input>
+			<wsdl:output message="tns:getTechnicalConditionResponse"></wsdl:output>
+			<wsdl:fault name="fault" message="tns:getTechnicalConditionFault"></wsdl:fault>
+		</wsdl:operation>
+		<wsdl:operation name="updateTechnicalCondition">
+			<wsdl:input message="tns:updateTechnicalConditionRequest"></wsdl:input>
+			<wsdl:output message="tns:updateTechnicalConditionResponse"></wsdl:output>
+			<wsdl:fault name="fault" message="tns:updateTechnicalConditionFault"></wsdl:fault>
+		</wsdl:operation>
+		<wsdl:operation name="removeTechnicalCondition">
+			<wsdl:input message="tns:removeTechnicalConditionRequest"></wsdl:input>
+			<wsdl:output message="tns:removeTechnicalConditionResponse"></wsdl:output>
+			<wsdl:fault name="fault" message="tns:removeTechnicalConditionFault"></wsdl:fault>
+		</wsdl:operation>
+		<wsdl:operation name="createTechnicalProfile">
+			<wsdl:input message="tns:createTechnicalProfileRequest"></wsdl:input>
+			<wsdl:output message="tns:createTechnicalProfileResponse"></wsdl:output>
+			<wsdl:fault name="fault" message="tns:createTechnicalProfileFault"></wsdl:fault>
+		</wsdl:operation>
+		<wsdl:operation name="findTechnicalProfiles">
+			<wsdl:input message="tns:findTechnicalProfilesRequest"></wsdl:input>
+			<wsdl:output message="tns:findTechnicalProfilesResponse"></wsdl:output>
+			<wsdl:fault name="fault" message="tns:findTechnicalProfilesFault"></wsdl:fault>
+		</wsdl:operation>
+		<wsdl:operation name="getTechnicalProfile">
+			<wsdl:input message="tns:getTechnicalProfileRequest"></wsdl:input>
+			<wsdl:output message="tns:getTechnicalProfileResponse"></wsdl:output>
+			<wsdl:fault name="fault" message="tns:getTechnicalProfileFault"></wsdl:fault>
+		</wsdl:operation>
+		<wsdl:operation name="updateTechnicalProfile">
+			<wsdl:input message="tns:updateTechnicalProfileRequest"></wsdl:input>
+			<wsdl:output message="tns:updateTechnicalProfileResponse"></wsdl:output>
+			<wsdl:fault name="fault" message="tns:updateTechnicalProfileFault"></wsdl:fault>
+		</wsdl:operation>
+		<wsdl:operation name="removeTechnicalProfile">
+			<wsdl:input message="tns:removeTechnicalProfileRequest"></wsdl:input>
+			<wsdl:output message="tns:removeTechnicalProfileResponse"></wsdl:output>
+			<wsdl:fault name="fault" message="tns:removeTechnicalProfileFault"></wsdl:fault>
+		</wsdl:operation>
+		<wsdl:operation name="createTechnicalProtocol">
+			<wsdl:input message="tns:createTechnicalProtocolRequest"></wsdl:input>
+			<wsdl:output message="tns:createTechnicalProtocolResponse"></wsdl:output>
+			<wsdl:fault name="fault" message="tns:createTechnicalProtocolFault"></wsdl:fault>
+		</wsdl:operation>
+		<wsdl:operation name="findTechnicalProtocols">
+			<wsdl:input message="tns:findTechnicalProtocolsRequest"></wsdl:input>
+			<wsdl:output message="tns:findTechnicalProtocolsResponse"></wsdl:output>
+			<wsdl:fault name="fault" message="tns:findTechnicalProtocolsFault"></wsdl:fault>
+		</wsdl:operation>
+		<wsdl:operation name="getTechnicalProtocol">
+			<wsdl:input message="tns:getTechnicalProtocolRequest"></wsdl:input>
+			<wsdl:output message="tns:getTechnicalProtocolResponse"></wsdl:output>
+			<wsdl:fault name="fault" message="tns:getTechnicalProtocolFault"></wsdl:fault>
+		</wsdl:operation>
+		<wsdl:operation name="updateTechnicalProtocol">
+			<wsdl:input message="tns:updateTechnicalProtocolRequest"></wsdl:input>
+			<wsdl:output message="tns:updateTechnicalProtocolResponse"></wsdl:output>
+			<wsdl:fault name="fault" message="tns:updateTechnicalProtocolFault"></wsdl:fault>
+		</wsdl:operation>
+		<wsdl:operation name="removeTechnicalProtocol">
+			<wsdl:input message="tns:removeTechnicalProtocolRequest"></wsdl:input>
+			<wsdl:output message="tns:removeTechnicalProtocolResponse"></wsdl:output>
+			<wsdl:fault name="fault" message="tns:removeTechnicalProtocolFault"></wsdl:fault>
+		</wsdl:operation>
+		<wsdl:operation name="subscribeOnService">
+			<wsdl:input message="tns:subscribeOnServiceRequest"></wsdl:input>
+			<wsdl:output message="tns:subscribeOnServiceResponse"></wsdl:output>
+			<wsdl:fault name="fault" message="tns:subscribeOnServiceFault"></wsdl:fault>
+		</wsdl:operation>
+		<wsdl:operation name="addEndPoint">
+			<wsdl:input message="tns:addEndPointRequest"></wsdl:input>
+			<wsdl:output message="tns:addEndPointResponse"></wsdl:output>
+			<wsdl:fault name="fault" message="tns:addEndPointFault"></wsdl:fault>
+		</wsdl:operation>
+	</wsdl:portType>
+</wsdl:definitions>

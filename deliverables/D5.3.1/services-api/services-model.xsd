@@ -1,0 +1,421 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema targetNamespace="http://www.petalslink.com/services-model/1.0"
+	elementFormDefault="qualified" xmlns="http://www.w3.org/2001/XMLSchema"
+	xmlns:tns="http://www.petalslink.com/services-model/1.0">
+
+
+	<element name="TechnicalInterface" type="tns:TechnicalInterfaceType">
+	</element>
+
+	<complexType name="TechnicalInterfaceType">
+		<complexContent>
+			<extension base="tns:BaseIDType">
+				<sequence>
+					<element ref="tns:TechnicalOperation"
+						maxOccurs="unbounded" minOccurs="1">
+					</element>
+					<element ref="tns:TechnicalProfile"></element>
+					<element name="idService" type="string"></element>
+				</sequence>
+				<attribute name="type" type="string"></attribute>
+				<attribute name="name" type="string"></attribute>
+			</extension>
+		</complexContent>
+	</complexType>
+
+	<element name="Capability" type="tns:CapabilityType"></element>
+
+
+	<element name="NetWorkProvisionEntry" type="tns:NetWorkProvisionEntityType">
+	</element>
+
+	<complexType name="NetWorkProvisionEntityType">
+		<complexContent>
+			<extension base="tns:BaseIDType">
+
+				<sequence>
+					<element name="languages" type="string" maxOccurs="unbounded"
+						minOccurs="0">
+					</element>
+				</sequence>
+				<attribute name="name" type="string"></attribute>
+				<attribute name="publicationTime" type="date"></attribute>
+				<attribute name="version" type="string"></attribute>
+			</extension>
+		</complexContent>
+	</complexType>
+
+	<element name="Service" type="tns:ServiceType">
+
+	</element>
+
+	<complexType name="ServiceType">
+		<complexContent>
+			<extension base="tns:NetWorkProvisionEntityType">
+				<sequence>
+					<element name="releaseStage" type="tns:ReleaseStageType"
+						maxOccurs="1" minOccurs="1">
+					</element>
+					<element name="granularity" type="tns:GranularityTypeType">
+					</element>
+					<element ref="tns:Capability" maxOccurs="unbounded"
+						minOccurs="1">
+					</element>
+					<element ref="tns:TechnicalInterface" maxOccurs="unbounded"
+						minOccurs="0">
+					</element>
+					<element ref="tns:Certification" maxOccurs="unbounded"
+						minOccurs="0"></element>
+				</sequence>
+				<attribute name="nature" type="tns:ServiceNatureType"></attribute>
+			</extension>
+		</complexContent>
+	</complexType>
+
+	<complexType name="TechnicalOperationType">
+		<complexContent>
+			<extension base="tns:BaseIDType">
+				<sequence>
+					<element name="idTechnicalInterface" type="string"></element>
+				</sequence>
+				<attribute name="name" type="string"></attribute>
+			</extension>
+		</complexContent>
+	</complexType>
+
+	<element name="TechnicalOperation" type="tns:TechnicalOperationType">
+	</element>
+
+	<element name="TechnicalParameter" type="tns:TechnicalParameterType">
+	</element>
+
+
+	<complexType name="TechnicalParameterType">
+		<complexContent>
+			<extension base="tns:BaseIDType">
+				<sequence>
+					<element name="type" type="string"></element>
+					<element name="minOccurs" type="int"></element>
+					<element name="maxOcuurs" type="int"></element>
+					<element name="idTechnicalOperation" type="string"></element>
+				</sequence>
+				<attribute name="name" type="string"></attribute>
+			</extension>
+		</complexContent>
+	</complexType>
+
+
+	<complexType name="CapabilityType">
+		<complexContent>
+			<extension base="tns:BaseIDType">
+				<sequence>
+					<element name="idService" type="string"></element>
+				</sequence>
+				<attribute name="name" type="string"></attribute>
+			</extension>
+		</complexContent>
+	</complexType>
+
+	<simpleType name="ServiceNatureType">
+		<restriction base="string">
+			<enumeration value="Other"></enumeration>
+			<enumeration value="Human"></enumeration>
+			<enumeration value="Semi-Automated"></enumeration>
+			<enumeration value="Automated"></enumeration>
+		</restriction>
+	</simpleType>
+
+
+	<simpleType name="ReleaseStageType">
+		<restriction base="string">
+			<enumeration value="Proposed"></enumeration>
+			<enumeration value="InDevelopment"></enumeration>
+			<enumeration value="InOperation"></enumeration>
+			<enumeration value="Deprecated"></enumeration>
+			<enumeration value="TargetedForDecommissioning"></enumeration>
+			<enumeration value="Decommissioned"></enumeration>
+
+		</restriction>
+	</simpleType>
+
+	<simpleType name="GranularityTypeType">
+		<restriction base="string">
+			<enumeration value="Other"></enumeration>
+			<enumeration value="Core"></enumeration>
+			<enumeration value="Compound"></enumeration>
+		</restriction>
+	</simpleType>
+
+	<complexType name="ServiceBundleType">
+		<complexContent>
+			<extension base="tns:NetWorkProvisionEntityType">
+				<sequence>
+					<element ref="tns:Part"></element>
+				</sequence>
+				<attribute name="bundlingConstraint" type="int"></attribute>
+			</extension>
+		</complexContent>
+
+	</complexType>
+
+	<complexType name="PartType">
+		<sequence>
+			<element name="optional" type="boolean"></element>
+		</sequence>
+	</complexType>
+
+
+	<element name="Part" type="tns:PartType"></element>
+
+
+	<element name="ServiceBundle" type="tns:ServiceBundleType"></element>
+
+
+
+
+	<complexType name="CompositeServiceType">
+		<complexContent>
+			<extension base="tns:ServiceType">
+				<sequence>
+					<element name="groupConstraint" type="int"></element>
+					<element ref="tns:Part"></element>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+
+	<complexType name="ElementDescriptionType">
+		<complexContent>
+			<extension base="tns:BaseIDType">
+				<sequence>
+					<element name="name" type="string"></element>
+					<element name="synonyms" type="string" maxOccurs="unbounded"
+						minOccurs="0">
+					</element>
+					<element name="shortDescription" type="string"></element>
+					<element name="longDescription" type="string"></element>
+					<element name="keywords" type="string" maxOccurs="unbounded"
+						minOccurs="0">
+					</element>
+					<element name="concept" type="string"></element>
+					<element name="language" type="string"></element>
+					<element name="idAgent" type="string"></element>
+					<element name="idCertification" type="string"></element>
+					<element name="idResource" type="string"></element>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+
+	<element name="ElementDescription" type="tns:ElementDescriptionType">
+	</element>
+
+	<complexType name="AgentType">
+		<complexContent>
+			<extension base="tns:BaseIDType">
+				<sequence>
+					<element name="namespace" type="string"></element>
+					<element ref="tns:ElementDescription"></element>
+					<element ref="tns:Certification"></element>
+					<element ref="tns:Classification"></element>
+				</sequence>
+				<attribute name="guid" type="string"></attribute>
+			</extension>
+		</complexContent>
+	</complexType>
+
+
+	<complexType name="ResourceAgentType">
+		<complexContent>
+			<extension base="tns:AgentType">
+				<sequence>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+
+	<element name="ResourceAgent" type="tns:ResourceAgentType"></element>
+
+
+	<complexType name="OrganizationType">
+		<complexContent>
+			<extension base="tns:AgentType">
+				<sequence>
+					<element name="legalForm" type="string"></element>
+					<element name="numberOfEmployees" type="int"></element>
+					<element name="yearOfFounding" type="int"></element>
+				</sequence>
+				<attribute name="name" type="string"></attribute>
+			</extension>
+		</complexContent>
+	</complexType>
+
+	<complexType name="AbstractServiceType">
+		<complexContent>
+			<extension base="tns:BaseIDType">
+				<sequence>
+					<element ref="tns:Classification"></element>
+					<element name="idService" type="string"></element>
+					<element name="idAbstractService" type="string"></element>
+				</sequence>
+				<attribute name="name" type="string"></attribute>
+			</extension>
+		</complexContent>
+	</complexType>
+
+
+	<element name="Certification" type="string"></element>
+
+	<complexType name="ClassificationType">
+		<complexContent>
+			<extension base="tns:BaseIDType">
+				<sequence>
+					<element name="idAgent" type="string"></element>
+					<element name="idResource" type="string"></element>
+					<element name="idCertification" type="string"></element>
+					<element name="idAbstractService" type="string"></element>
+					<element name="idService" type="string"></element>
+				</sequence>
+				<attribute name="taxonomy" type="string"></attribute>
+				<attribute name="class" type="string"></attribute>
+			</extension>
+		</complexContent>
+	</complexType>
+
+	<element name="Classification" type="tns:ClassificationType"></element>
+
+
+	<complexType name="TechnicalProfileType">
+		<complexContent>
+			<extension base="tns:BaseIDType">
+				<sequence>
+					<element ref="tns:TechnicalProtocol"></element>
+					<element name="idTechnicalInterface" type="string"></element>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+
+
+	<complexType name="TechnicalProtocolType">
+		<complexContent>
+			<extension base="tns:BaseIDType">
+				<sequence>
+					<element name="osiLayser" type="int"></element>
+					<element name="idTechnicalProfile" type="string"></element>
+					<element ref="tns:EndPoint"></element>
+				</sequence>
+				<attribute name="identifier" type="string"></attribute>
+				<attribute name="type" type="string"></attribute>
+			</extension>
+		</complexContent>
+	</complexType>
+
+	<element name="TechnicalProfile" type="tns:TechnicalProfileType"></element>
+
+	<element name="TechnicalProtocol" type="tns:TechnicalProtocolType">
+	</element>
+
+	<simpleType name="ProtocolTypeType">
+		<restriction base="string">
+			<enumeration value="Other"></enumeration>
+			<enumeration value="Transport"></enumeration>
+			<enumeration value="Message"></enumeration>
+			<enumeration value="Security"></enumeration>
+			<enumeration value="MetadataExchange"></enumeration>
+			<enumeration value="ReliableMessaging"></enumeration>
+			<enumeration value="Transaction"></enumeration>
+			<enumeration value="Management"></enumeration>
+		</restriction>
+	</simpleType>
+
+	<complexType name="TechnicalConditionType">
+		<complexContent>
+			<extension base="tns:BaseIDType">
+				<sequence>
+					<element name="idTechnicalOperation" type="string"></element>
+				</sequence>
+				<attribute name="name" type="string"></attribute>
+			</extension>
+		</complexContent>
+	</complexType>
+
+	<complexType name="NaturalPersonType">
+		<complexContent>
+			<extension base="tns:AgentType">
+				<sequence>
+					<element name="title" type="string"></element>
+					<element name="jobTitle" type="string"></element>
+					<element name="departments" type="string" maxOccurs="unbounded"
+						minOccurs="0">
+					</element>
+					<element name="middleNames" type="string" maxOccurs="unbounded"
+						minOccurs="0">
+					</element>
+					<element name="idOrganization" type="string"></element>
+				</sequence>
+				<attribute name="firstName" type="string"></attribute>
+				<attribute name="lastName" type="string"></attribute>
+				<attribute name="dateOfBirth" type="date"></attribute>
+			</extension>
+		</complexContent>
+	</complexType>
+
+
+	<complexType name="ResourceType">
+		<complexContent>
+			<extension base="tns:BaseIDType">
+				<sequence>
+					<element ref="tns:Classification"></element>
+					<element ref="tns:Certification"></element>
+					<element ref="tns:ElementDescription"></element>
+					<element name="idResourceAgent" type="string"></element>
+					<element name="idService" type="string"></element>
+				</sequence>
+				<attribute name="name" type="string"></attribute>
+				<attribute name="type" type="string"></attribute>
+			</extension>
+		</complexContent>
+	</complexType>
+
+	<simpleType name="ResourceTypeType">
+		<restriction base="string">
+			<enumeration value="SoftwareResource"></enumeration>
+			<enumeration value="HumanResource"></enumeration>
+			<enumeration value="PhysicalResource"></enumeration>
+		</restriction>
+	</simpleType>
+
+	<complexType name="TechnicalFaultType">
+		<complexContent>
+			<extension base="tns:BaseIDType">
+				<sequence>
+					<element name="type" type="string"></element>
+					<element name="idTechnicalOperation" type="string"></element>
+				</sequence>
+				<attribute name="name" type="string"></attribute>
+			</extension>
+		</complexContent>
+	</complexType>
+
+
+	<complexType name="BaseIDType">
+		<sequence>
+			<element name="id" type="string"></element>
+		</sequence>
+	</complexType>
+
+	<element name="TechnicalCondition" type="tns:TechnicalConditionType">
+	</element>
+
+	<element name="TechnicalFault" type="tns:TechnicalFaultType"></element>
+
+	<complexType name="EndPointType">
+		<sequence>
+			<element name="address" type="anyURI"></element>
+		</sequence>
+		<attribute name="idEndPoint" type="string"></attribute>
+	</complexType>
+
+	<element name="EndPoint" type="tns:EndPointType"></element>
+</schema>
