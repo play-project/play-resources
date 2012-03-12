@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<agreement xmlns:ns1="http://schemas.ggf.org/graap/2007/03/ws-agreement"
+	xmlns:ns2="http://docs.oasis-open.org/wsrf/bf-2" xmlns:ns3="http://www.w3.org/2005/08/addressing"
+	xmlns:ns4="http://upmc.fr/ns/ws-qml" xmlns:ns5="http://www.semeuse.org/monitoring"
+	xmlns:ns6="http://com.ebmwebsourcing.sla/agreementExtensions"
+	ns1:AgreementId="1">
+	<ns1:Name>FiremanELA</ns1:Name>
+	<ns1:Context>
+		<ns1:AgreementInitiator xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+			xsi:type="ns3:EndpointReferenceType">
+			<ns3:Address>http://www.example.org/prefect/@PrefetEndpoint</ns3:Address>
+		</ns1:AgreementInitiator>
+		<ns1:AgreementResponder xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+			xsi:type="ns3:EndpointReferenceType">
+			<ns3:Address>http://www.example.org/fireman/@FiremanEndpoint</ns3:Address>
+		</ns1:AgreementResponder>
+		<ns1:ExpirationTime>2009-10-09T15:10:10.250+02:00
+		</ns1:ExpirationTime>
+		<tns:alertDefinition name="alert0" id="alert0"
+			xmlns:tns="http://com.petalslink.common.alerting.definition/1.0"
+			xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+			<tns:to name="to0.name" id="to0">
+				<tns:lastname>Doe</tns:lastname>
+				<tns:firstname>John</tns:firstname>
+				<tns:partner>CLIENT</tns:partner>
+				<tns:protocol id="protocol0" name="soap-notification"
+					type="http://com.petalslink.common.alerting.definition.protocol/soap-notification/1.0">
+					<soap-notif:binding id="binding0"
+						xmlns:soap-notif="http://com.petalslink.common.alerting.definition.protocol/soap-notification/1.0"
+						xmlns:tns1="http://com.petalslink.common.alerting.definition/1.0"
+						xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+						xsi:schemaLocation="http://com.petalslink.common.alerting.definition.protocol/soap-notification/1.0 ../../../../wscad-impl/src/main/resources/schema/wscad/extensions/protocols/soap-notification.xsd ">
+						<soap-notif:soap-address>http://localhost:9600/AlertService</soap-notif:soap-address>
+					</soap-notif:binding>
+				</tns:protocol>
+				<tns:format>CAP</tns:format>
+			</tns:to>
+		</tns:alertDefinition>
+	</ns1:Context>
+	<ns1:Terms>
+		<ns1:All>
+			<ns1:ServiceDescriptionTerm ns1:Name="term_1"
+				ns1:ServiceName="responderService" xmlns:ns3="http://www.w3.org/2005/08/addressing">
+			</ns1:ServiceDescriptionTerm>
+			<ns1:ServiceReference ns1:Name="term_1"
+				ns1:ServiceName="responderService" />
+			<ns1:ServiceProperties ns1:Name="term_1"
+				ns1:ServiceName="responderService">
+				<ns1:VariableSet>
+					<ns1:Variable ns1:Metric="http://wwww.w3.org/2007/ont/unit#s"
+						ns1:Name="frequency">
+						<ns1:Location xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+							xsi:type="ns6:Location">
+							<ns4:QoS-dimension ontology=""
+								semantic-concept="http://www.nca.or.kr/2006/wsqdl/QualityFactor/MeasureFactor/frequency" />
+						</ns1:Location>
+					</ns1:Variable>
+				</ns1:VariableSet>
+			</ns1:ServiceProperties>
+			<ns1:GuaranteeTerm ns1:Name="FiremanGuarantee">
+				<ns1:ServiceScope ns1:ServiceName="Fireman">
+					topic:CardiacRyhtm
+				</ns1:ServiceScope>
+				<ns1:ServiceLevelObjective>
+					<ns1:KPITarget>
+						<ns1:KPIName>frequency</ns1:KPIName>
+						<ns1:CustomServiceLevel
+							xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" name="frequency"
+							operator="&amp;lt;" xsi:type="ns4:ConstraintType">
+							<ns4:value floatValue="10">
+								<ns4:unit name="notification/minute" />
+								<ns4:type name="decimal"
+									semantic-concept="http://www.w3c.org/2001/XMLSchema:decimal" />
+							</ns4:value>
+						</ns1:CustomServiceLevel>
+					</ns1:KPITarget>
+				</ns1:ServiceLevelObjective>
+			</ns1:GuaranteeTerm>
+		</ns1:All>
+	</ns1:Terms>
+</agreement>
